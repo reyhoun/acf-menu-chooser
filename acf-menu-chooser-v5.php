@@ -36,16 +36,14 @@ class acf_field_menu_chooser extends acf_field {
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
 		
-		$this->category = 'basic';
+        $this->category = 'choice';
 		
 		
 		/*
 		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
 		*/
 		
-		$this->defaults = array(
-			'font_size'	=> 14,
-		);
+		$this->defaults = array();
 		
 		
 		/*
@@ -74,12 +72,6 @@ class acf_field_menu_chooser extends acf_field {
 
 	
 	function render_field( $field ) {
-		
-		
-		// echo '<pre>';
-		// 	print_r( $field );
-		// echo '</pre>';
-		
 
 		$field_value = $field['value'];
 							
@@ -87,8 +79,7 @@ class acf_field_menu_chooser extends acf_field {
 		$field['choices'] = array();
 		$menus = wp_get_nav_menus();
 							
-
-		echo '<select name="' . $field['name'] . '">';
+		echo '<select name="' . $field['name'] . '" class="acf-menu-chooser">';
 
 				if ( ! empty( $menus ) ) {
 					foreach ( $menus as $choice ) {
@@ -100,14 +91,7 @@ class acf_field_menu_chooser extends acf_field {
 				}
 		echo '</select>';
 
-
-
-
 	}
-	
-		
-	
-	
 	
 }
 

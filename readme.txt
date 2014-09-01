@@ -1,23 +1,18 @@
 === Advanced Custom Fields: Menu Chooser Field ===
-Contributors: AUTHOR_NAME
-Tags: PLUGIN_TAGS
+Contributors: shah-sa
+Tags: ACF, Field, Menu
 Requires at least: 3.5
 Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-DESCRIPTION
-
-== Description ==
-
-EXTENDED_DESCRIPTION
+This plugin create a field type with a select field that load all menu wordpress and return id of selected menu.
 
 = Compatibility =
 
 This ACF field type is compatible with:
 * ACF 5
-* ACF 4
 
 == Installation ==
 
