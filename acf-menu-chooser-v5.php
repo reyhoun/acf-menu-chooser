@@ -50,10 +50,20 @@ class acf_field_menu_chooser extends acf_field {
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
 		*  var message = acf._e('menu-chooser', 'error');
 		*/
-		
 		$this->l10n = array(
 			'error'	=> __('Error! Please enter a higher value', 'acf-menu-chooser'),
 		);
+
+
+		/*
+		 *  text to display in the default option when it's not required
+		 */
+		$this->no_choice_label =__('None', 'acf-menu-chooser');
+
+		/*
+		 *  text to display in the default option when it's required
+		 */
+		$this->select_label =__('Select...', 'acf-menu-chooser');
 		
 				
 		// do not delete!
@@ -80,6 +90,15 @@ class acf_field_menu_chooser extends acf_field {
 		$menus = wp_get_nav_menus();
 							
 		echo '<select name="' . $field['name'] . '" class="acf-menu-chooser">';
+
+		// If there's no field value default to the first option
+		$default_selected = !$field_value ? 'selected' : '';
+		// Handle the default differently when the field is required for UX purposes
+		if ( $field['required'] ) {
+			echo '<option value="" ' . $default_selected . ' disabled>' . $this->select_label .'</option>' ;
+		} else {
+			echo '<option value="" ' . $default_selected . '>' . $this->no_choice_label .'</option>' ;
+		}
 
 				if ( ! empty( $menus ) ) {
 					foreach ( $menus as $choice ) {
